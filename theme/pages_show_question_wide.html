@@ -1,0 +1,57 @@
+<div class="row">
+
+  <div class="col-md-3 sidebar">
+    <div class="btn-group-vertical" role="group">
+      {% for child in page.parent.children %}
+      {% if child.type_name == 'Question' %}
+      <a class="btn btn-default supporter-nav-btn" href="{{ child.url }}">{{ child.headline }}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    {% include "breadcrumbs" %}
+
+    {% if page.headline.size > 0 %}
+    <h2 class="headline">{{ page.headline }}</h2>
+    {% endif %}
+
+    <div id="content">
+
+    {% if page.question.content.size > 0 %}
+    <div id="intro" class="intro">
+      {{ page.question.content }}
+    </div>
+    {% endif %}
+
+    {% if page.question.answer.size > 0 %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="answer-wrap panel panel-default">
+          <div class="answer-a panel-heading">Answer</div>
+          <div class="answer panel-body">{{ page.question.answer }}</div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.tags_count > 0 %}
+    <div id="page-tags" class="page-tags">
+      {% include "page_tags" with page %}
+    </div>
+    {% endif %}
+
+    <div class="like-page">
+      <strong>Was this helpful?</strong>
+      {% include "like_page" %}
+    </div>
+
+    {% if page.show_stream? %}
+    {% include "page_stream" %}
+    {% endif %}
+
+  </div>
+
+  </div>
+</div>

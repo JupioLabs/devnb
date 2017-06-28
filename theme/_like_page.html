@@ -1,0 +1,17 @@
+<div class="sharetable padtopless clearfix">
+  <div class="facebook-cell">
+    {% if request.sorta_logged_in? %}
+      <fb:like href="{{ page.full_url_with_recruiter }}" show_faces="false" width="300" send="true" action="like" colorscheme="{{ site.facebook_colorscheme }}" ref="r{{ current_signup.id }}"></fb:like>
+    {% else %}
+      <fb:like href="{{ page.full_url }}" show_faces="false" width="300" colorscheme="{{ site.facebook_colorscheme }}" send="true" action="like"></fb:like>
+    {% endif %}
+  </div>
+  <div class="twitter-cell">
+    {% if request.sorta_logged_in? %}
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="{{ page.default_face_tweet_text }}" data-via="{{ site.broadcaster.twitter_login }}" data-url="{{ page.full_url_with_recruiter }}">Tweet</a>
+    {% else %}
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="{{ page.default_face_tweet_text }}" data-via="{{ site.broadcaster.twitter_login }}">Tweet</a>
+    {% endif %}
+  </div>
+  {{ page.google_plus_html }}
+</div>

@@ -1,0 +1,33 @@
+{
+  "page_title": "Fred",
+  "content_for_header": "WHATEVER DUDE",
+  "content_for_notifications": "This is a notification",
+  "request": {
+    "is_sidebar": true,
+    "template": "_template"
+  },
+  "profile": {
+    "request" : {
+      "logged_in": true,
+      "current_signup": {
+        "id": "HELLO",
+        "following_ids": ["HELLO"]
+      }
+    },
+    "signup_follow" : {
+      "id": "HELLO"
+    }
+  },
+  "signup": {
+    "request" : {
+      "logged_in": true,
+      "current_signup": {
+        "id": "HELLO",
+        "following_ids": ["HELLO"]
+      }
+    },
+    "signup_follow" : {
+      "id": "HELLO"
+    }
+  }
+}

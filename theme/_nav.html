@@ -1,0 +1,40 @@
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {% if site.has_meta_image? %}
+        <a class="navbar-brand" href="/"><img alt="{{ site.long_name }}" src="{{ site.meta_image_url }}"></a>
+      {% else %}
+        <a class="navbar-brand" href="/">{{ site.long_name }}</a>
+      {% endif %}
+    </div>
+    <div id="menu-collapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% for child in site.root_nav_pages %}
+        {% if child.leaf? or child.nav_children.size == 0 %}
+        <li {% if child.is_or_is_ancestor_of_current_page? %}class="active"{% endif %}>
+          <a href="{{ child.url }}">{{ child.name }}</a>
+        </li>
+        {% else %}
+        <li class="{% if child.is_or_is_ancestor_of_current_page? %}active{% endif %} dropdown">
+          <a href="{{ child.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ child.name }} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            {% if site.show_parent_in_nav_dropdown? %}
+              <li><a href="{{ child.url }}">{{ child.name }}</a></li>
+            {% endif %}
+            {% for child2 in child.nav_children %}
+              <li><a href="{{ child2.url }}">{{ child2.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>
